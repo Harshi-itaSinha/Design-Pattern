@@ -2,45 +2,49 @@ package main
 
 import "fmt"
 
-// interacts with factory and factory intrates with others 
-// why ? application to be loosely coupled 
-// ammending does not affect to others
-// how ?? to
+// Car interface
 type Car interface {
 	getCar() string
 }
-type SedanType struct{
+
+// SedanType struct implementing Car interface
+type SedanType struct {
 	Name string
 }
-func getNewSedan() *SedanType{
+
+func getNewSedan() Car {
 	return &SedanType{}
 }
 
-func (s *SedanType) getCar string{
+func (s *SedanType) getCar() string {
 	return "Honda City"
 }
-type HactBackType struct{
+
+// HactBackType struct implementing Car interface
+type HactBackType struct {
 	Name string
 }
-func getNewHactBack() *HactBackType{
+
+func getNewHactBack() Car {
 	return &HactBackType{}
 }
 
-func (s *HactBackType) getCar string{
-	return "polo"
+func (h *HactBackType) getCar() string {
+	return "Polo"
 }
 
-
-func main(){
-	getCarFactory(1)
-	getCarFactory(2)
+// Main function
+func main() {
+	getCarFactory(1) // Should return "Polo"
+	getCarFactory(2) // Should return "Honda City"
 }
 
+// Factory function
 func getCarFactory(cartype int) {
 	var car Car
 	if cartype == 1 {
 		car = getNewHactBack()
-	}else{
+	} else {
 		car = getNewSedan()
 	}
 
