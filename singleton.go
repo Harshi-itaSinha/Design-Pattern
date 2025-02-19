@@ -13,6 +13,9 @@ var mutex =&sync.Mutex{}
 
 type config struct {
 
+	// various things can be here in this struct 
+	// i think go can compete a lot 
+
 	// config variable
 }
 
